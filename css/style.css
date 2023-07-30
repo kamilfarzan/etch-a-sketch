@@ -1,0 +1,13 @@
+:root {
+    --dark: #071e22;
+}
+body {
+    background-color: var(--dark);
+}
+.container {
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-flow: row wrap;
+}
