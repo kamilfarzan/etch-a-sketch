@@ -1,7 +1,8 @@
 const container = document.querySelector(`#container`);
 let squareEdge = 16;
+let fillColor = "black";
 
-function renderGrids(edge) {
+function renderGrids(edge, color) {
   container.textContent = "";
   for (let i = 0; i < edge; i++) {
     for (let j = 0; j < edge; j++) {
@@ -13,14 +14,31 @@ function renderGrids(edge) {
       container.appendChild(gridCell);
     }
   }
+  hoverChange(container, color)
+  // container.childNodes.forEach((cell) => {
+  //   cell.addEventListener(`mouseover`, () => {
+  //     if (color == `rainbow`) {
+  //       cell.style.backgroundColor = returnRandomColor();
+  //     } else {
+  //       cell.style.backgroundColor = color;
+  //     }
+  //   });
+  // });
+}
+
+function hoverChange(container, color) {
   container.childNodes.forEach((cell) => {
     cell.addEventListener(`mouseover`, () => {
-      cell.style.backgroundColor = "black";
+      if (color == `rainbow`) {
+        cell.style.backgroundColor = returnRandomColor();
+      } else {
+        cell.style.backgroundColor = color;
+      }
     });
   });
 }
 
-renderGrids(squareEdge);
+renderGrids(squareEdge, fillColor);
 
 const customGridButton = document.querySelector(`#custom-grid`);
 customGridButton.addEventListener(`click`, handleCustomGrid);
@@ -34,4 +52,25 @@ function handleCustomGrid() {
     alert("Minimum is 1.");
   }
   renderGrids(newGridSize);
+}
+
+const rainbowButton = document.querySelector(`#rainbow`);
+rainbowButton.addEventListener(`click`, handleRainbowFill);
+
+function handleRainbowFill() {
+  hoverChange(container, "rainbow")
+}
+
+function returnRandomColor() {
+  let h = Math.floor(Math.random() * 360);
+  let s = Math.floor(Math.random() * 40 + 30);
+  let l = Math.floor(Math.random() * 40 + 30);
+  return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+const blackButton = document.querySelector(`#black`);
+blackButton.addEventListener(`click`, handleBlackButton)
+
+function handleBlackButton() {
+  hoverChange(container, "black")
 }
