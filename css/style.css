@@ -1,25 +1,106 @@
 :root {
-    --dark: #071e22;
+  --dark: hsl(220, 8%, 10%);
 }
 @font-face {
-    font-family: "VCR_OSD_Mono";
-    src: url(../fonts/VCR_OSD_MONO.ttf);
+  font-family: "VCR_OSD_Mono";
+  src: url(../fonts/VCR_OSD_MONO.ttf);
 }
 
-
 body {
-    background-color: var(--dark);
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+  background-color: var(--dark);
+
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  align-items: center;
+  flex-direction: column;
 }
 
 .title {
-    font-family: "VCR_OSD_Mono";
-    color: white;
+  font-family: "VCR_OSD_Mono";
+  color: white;
+}
+
+.main-app {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  align-items: center;
+}
+
+.buttons {
+  background-color: hsl(220, 8%, 15%);
+  padding: 30px;
+
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.buttons > button {
+  padding: 20px 20px;
+
+  width: 200px;
+
+  font-size: 16px;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  transition: transform 100ms ease-in-out;
+}
+
+.buttons > button:hover {
+  box-shadow: 0px 0px 10px 1px white;
+  transform: scale(1.05);
+}
+
+.buttons > #rainbow:hover {
+  animation-name: rainbow;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 .container {
-    background-color: white;
-    height: 500px;
-    width: 500px;
-    display: flex;
-    flex-flow: row wrap;
+  border: 30px solid hsl(220, 8%, 15%);
+
+  background-color: white;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  aspect-ratio: 1/1;
+}
+
+@keyframes rainbow {
+  0% {
+    box-shadow: 0px 0px 10px 1px hsl(300, 100%, 75%);
+  }
+  16% {
+    box-shadow: 0px 0px 10px 1px hsl(275, 100%, 75%);
+  }
+  33% {
+    box-shadow: 0px 0px 10px 1px hsl(240, 100%, 75%);
+  }
+  49% {
+    box-shadow: 0px 0px 10px 1px hsl(120, 100%, 75%);
+  }
+  66% {
+    box-shadow: 0px 0px 10px 1px hsl(60, 100%, 75%);
+  }
+  83% {
+    box-shadow: 0px 0px 10px 1px hsl(39, 100%, 75%);
+  }
+  100% {
+    box-shadow: 0px 0px 10px 1px hsl(0, 100%, 75%);
+  }
 }

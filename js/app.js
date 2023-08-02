@@ -9,8 +9,8 @@ function renderGrids(edge, color) {
       let gridCell = document.createElement("div");
       gridCell.style.boxShadow = "0px 0px 0px 1px gray";
       gridCell.style.backgroundColor = "white";
-      gridCell.style.width = `${container.offsetWidth / edge}px`;
-      gridCell.style.height = `${container.offsetHeight / edge}px`;
+      gridCell.style.width = `${container.clientWidth / edge}px`;
+      gridCell.style.height = `${container.clientHeight / edge}px`;
       container.appendChild(gridCell);
     }
   }
