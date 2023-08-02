@@ -1,9 +1,21 @@
 :root {
     --dark: #071e22;
 }
+@font-face {
+    font-family: "VCR_OSD_Mono";
+    src: url(../fonts/VCR_OSD_MONO.ttf);
+}
+
+
 body {
     background-color: var(--dark);
 }
+
+.title {
+    font-family: "VCR_OSD_Mono";
+    color: white;
+}
+
 .container {
     background-color: white;
     height: 500px;

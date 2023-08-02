@@ -14,16 +14,7 @@ function renderGrids(edge, color) {
       container.appendChild(gridCell);
     }
   }
-  hoverChange(container, color)
-  // container.childNodes.forEach((cell) => {
-  //   cell.addEventListener(`mouseover`, () => {
-  //     if (color == `rainbow`) {
-  //       cell.style.backgroundColor = returnRandomColor();
-  //     } else {
-  //       cell.style.backgroundColor = color;
-  //     }
-  //   });
-  // });
+  hoverChange(container, color);
 }
 
 function hoverChange(container, color) {
@@ -44,21 +35,30 @@ const customGridButton = document.querySelector(`#custom-grid`);
 customGridButton.addEventListener(`click`, handleCustomGrid);
 
 function handleCustomGrid() {
-  let newGridSize = prompt(`Enter new edge length: (eg. '64' for 64x64 grid)`);
+  let newGridSize = parseInt(
+    prompt(`Enter new edge length: (eg. '32' for 32x32 grid)`),
+    10
+  );
   if (newGridSize > 64) {
     alert("Maximum is 64.");
-    newGridSize = 64;
+    newGridSize = handleCustomGrid();
   } else if (newGridSize < 1) {
     alert("Minimum is 1.");
+    newGridSize = handleCustomGrid();
+  } else if (isNaN(newGridSize)) {
+    alert("Please enter a numeric value.");
+    newGridSize = handleCustomGrid();
   }
-  renderGrids(newGridSize);
+  renderGrids(newGridSize, fillColor);
+  return newGridSize;
 }
 
 const rainbowButton = document.querySelector(`#rainbow`);
 rainbowButton.addEventListener(`click`, handleRainbowFill);
 
 function handleRainbowFill() {
-  hoverChange(container, "rainbow")
+  fillColor = "rainbow";
+  hoverChange(container, "rainbow");
 }
 
 function returnRandomColor() {
@@ -69,8 +69,17 @@ function returnRandomColor() {
 }
 
 const blackButton = document.querySelector(`#black`);
-blackButton.addEventListener(`click`, handleBlackButton)
+blackButton.addEventListener(`click`, handleBlackButton);
 
 function handleBlackButton() {
-  hoverChange(container, "black")
+  fillColor = "black";
+  hoverChange(container, "black");
+}
+
+const clearButton = document.querySelector(`#clear`)
+clearButton.addEventListener(`click`, handleClearButton)
+
+function handleClearButton() {
+  fillColor = "white";
+  hoverChange(container, "white");
 }
