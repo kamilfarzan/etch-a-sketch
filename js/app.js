@@ -1,6 +1,11 @@
+// Colors
+const black = `hsl(0, 0%, 0%)`;
+const white = `hsl(0, 0%, 100%)`;
+
+// Code
 const container = document.querySelector(`#container`);
 let squareEdge = 16;
-let fillColor = "black";
+let fillColor = black;
 
 function renderGrids(edge, color) {
   container.textContent = "";
@@ -62,24 +67,24 @@ function handleRainbowFill() {
 }
 
 function returnRandomColor() {
-  let h = Math.floor(Math.random() * 360);
-  let s = Math.floor(Math.random() * 40 + 30);
-  let l = Math.floor(Math.random() * 40 + 30);
-  return `hsl(${h}, ${s}%, ${l}%)`;
+  let r = Math.floor(Math.random() * 255);
+  let g = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 const blackButton = document.querySelector(`#black`);
 blackButton.addEventListener(`click`, handleBlackButton);
 
 function handleBlackButton() {
-  fillColor = "black";
-  hoverChange(container, "black");
+  fillColor = black;
+  hoverChange(container, black);
 }
 
-const clearButton = document.querySelector(`#clear`)
-clearButton.addEventListener(`click`, handleClearButton)
+const clearButton = document.querySelector(`#clear`);
+clearButton.addEventListener(`click`, handleClearButton);
 
 function handleClearButton() {
-  fillColor = "white";
-  hoverChange(container, "white");
+  fillColor = white;
+  hoverChange(container, white);
 }

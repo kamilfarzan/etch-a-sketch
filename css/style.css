@@ -1,5 +1,7 @@
 :root {
   --dark: hsl(220, 8%, 10%);
+  --lighter-dark: hsl(220, 8%, 15%);
+  --white: hsl(0, 0%, 100%);
 }
 @font-face {
   font-family: "VCR_OSD_Mono";
@@ -22,7 +24,7 @@ body {
 
 .title {
   font-family: "VCR_OSD_Mono";
-  color: white;
+  color: var(--white);
 }
 
 .main-app {
@@ -33,7 +35,7 @@ body {
 }
 
 .buttons {
-  background-color: hsl(220, 8%, 15%);
+  background-color: var(--lighter-dark);
   padding: 30px;
 
   border-radius: 5px;
@@ -52,14 +54,14 @@ body {
 
   font-size: 16px;
 
-  border: 1px solid black;
+  border: 1px solid hsl(0, 0%, 0%);
   border-radius: 10px;
 
   transition: transform 100ms ease-in-out;
 }
 
 .buttons > button:hover {
-  box-shadow: 0px 0px 10px 1px white;
+  box-shadow: 0px 0px 10px 1px var(--white);
   transform: scale(1.05);
 }
 
@@ -71,9 +73,9 @@ body {
 }
 
 .container {
-  border: 30px solid hsl(220, 8%, 15%);
+  border: 30px solid var(--lighter-dark);
 
-  background-color: white;
+  background-color: var(--white);
   height: 500px;
   width: 500px;
   display: flex;
