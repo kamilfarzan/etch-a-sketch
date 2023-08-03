@@ -2,6 +2,16 @@
 const black = `hsl(0, 0%, 0%)`;
 const white = `hsl(0, 0%, 100%)`;
 
+// Mouse Condition
+
+let mouseDown = false;
+document.body.onmousedown = () => {
+  mouseDown = true;
+};
+document.body.onmouseup = () => {
+  mouseDown = false;
+};
+
 // Code
 const container = document.querySelector(`#container`);
 let squareEdge = 16;
@@ -24,13 +34,18 @@ function renderGrids(edge, color) {
 
 function hoverChange(container, color) {
   container.childNodes.forEach((cell) => {
-    cell.addEventListener(`mouseover`, () => {
-      if (color == `rainbow`) {
-        cell.style.backgroundColor = returnRandomColor();
-      } else {
-        cell.style.backgroundColor = color;
+    cell.addEventListener(`mousemove`, () => {
+      if (mouseDown) {
+        if (color == `rainbow`) {
+          cell.style.backgroundColor = returnRandomColor();
+        } else {
+          cell.style.backgroundColor = color;
+        }
       }
     });
+    cell.ondragstart = () => {
+      return false;
+    };
   });
 }
 
